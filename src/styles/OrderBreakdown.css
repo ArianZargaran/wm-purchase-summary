@@ -33,7 +33,7 @@
 }
 
 .wm-order-summary-tooltip:before {
-  content: "         ";
+  content: " ";
   position: absolute;
   top: -20px;
   width: 0;

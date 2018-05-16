@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { connect } from "react-redux";
 
 import "../styles/OrderBreakdown.css";
@@ -99,7 +100,6 @@ class OrderBreakdown extends Component {
 
   handleClick() {
     if (!this.state.tooltipVisible) {
-      // attach/remove event handler
       document.addEventListener("click", this.handleOutsideClick, false);
     } else {
       document.removeEventListener("click", this.handleOutsideClick, false);
