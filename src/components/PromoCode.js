@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/PromoCode.css";
-import PromoForm from "./PromoForm";
+import PromoForm from "../containers/PromoForm";
 
 export default class PromoCode extends Component {
   constructor(props) {

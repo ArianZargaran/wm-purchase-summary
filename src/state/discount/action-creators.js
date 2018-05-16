@@ -1,8 +1,8 @@
 export const DISCOUNT_ENABLED = "DISCOUNT_ENABLED";
 
-export function applyDisc(percentage) {
+export function applyDisc() {
   return {
     type: DISCOUNT_ENABLED,
-    payload: percentage
+    payload: 10
   };
 }

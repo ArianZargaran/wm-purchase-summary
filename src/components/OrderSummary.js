@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import OrderBreakdown from "../containers/OrderBreakdown";
-import ItemDetails from "../containers/ItemDetails";
-import PromoCode from "../containers/PromoCode";
+import ItemDetails from "./ItemDetails";
+import PromoCode from "./PromoCode";
 
 import "../styles/OrderSummary.css";
 

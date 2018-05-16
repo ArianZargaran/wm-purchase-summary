@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { applyDisc } from "../state/discount/action-creators";
+
+import "../styles/PromoForm.css";
 
 class PromoForm extends Component {
   constructor(props) {
@@ -11,7 +16,10 @@ class PromoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.updatePrice.bind(this, this.state.value)}>
+      <form
+        className="wm-form-discount"
+        onSubmit={this.updatePrice.bind(this, this.state.value)}
+      >
         <input
           value={this.state.value}
           onChange={this.onInputChange.bind(this)}
@@ -33,7 +41,7 @@ class PromoForm extends Component {
     ev.preventDefault();
 
     if (val === "DISCOUNT") {
-      this.props.discount(10);
+      this.props.applyDisc();
     }
 
     this.setState({
@@ -42,4 +50,8 @@ class PromoForm extends Component {
   }
 }
 
-export default PromoForm;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ applyDisc }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PromoForm);

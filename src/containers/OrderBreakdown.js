@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 
 import "../styles/OrderBreakdown.css";
@@ -75,7 +74,6 @@ class OrderBreakdown extends Component {
       return cart.cart[el].price;
     });
     let subtotal = pricesArr.reduce((tot, nextEl) => tot + nextEl);
-
     this.calcTaxes(subtotal);
 
     this.setState({
@@ -121,7 +119,8 @@ class OrderBreakdown extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
+    total: state.discount
   };
 }
 

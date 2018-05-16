@@ -25,4 +25,5 @@
 
 html {
   font-family: var(--wm-header-font-family);
+  box-sizing: content-box;
 }

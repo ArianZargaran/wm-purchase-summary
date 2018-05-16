@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/ItemDetails.css";
 
-import ProductDetails from "./ProductDetails";
+import ProductDetails from "../containers/ProductDetails";
 
 export default class ItemDetails extends Component {
   constructor(props) {
