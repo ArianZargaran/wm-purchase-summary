@@ -18,7 +18,11 @@ class PromoForm extends Component {
     return (
       <form
         className="wm-form-discount"
-        onSubmit={this.updatePrice.bind(this, this.state.value)}
+        onSubmit={this.updatePrice.bind(
+          this,
+          this.state.value,
+          this.props.total
+        )}
       >
         <input
           value={this.state.value}
@@ -37,11 +41,11 @@ class PromoForm extends Component {
     });
   }
 
-  updatePrice(val, ev) {
+  updatePrice(val, total, ev) {
     ev.preventDefault();
 
     if (val === "DISCOUNT") {
-      this.props.applyDisc();
+      this.props.applyDisc(total.total);
     }
 
     this.setState({
@@ -50,8 +54,15 @@ class PromoForm extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    total: state.discount
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ applyDisc }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(PromoForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PromoForm);

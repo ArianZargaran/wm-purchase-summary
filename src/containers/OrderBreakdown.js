@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { calcTotal } from "../state/discount/action-creators";
 
 import "../styles/OrderBreakdown.css";
 
@@ -25,7 +27,8 @@ class OrderBreakdown extends Component {
   }
 
   render() {
-    const { subtotal, savings, total, taxes, tooltipVisible } = this.state;
+    const { subtotal, savings, taxes, tooltipVisible } = this.state;
+    const { total } = this.props;
 
     return (
       <div
@@ -62,7 +65,7 @@ class OrderBreakdown extends Component {
         </div>
         <div className="wm-order-summary-total">
           <span className="wm-order-summary-breackdown_total">Est. total</span>
-          <span className="wm-order-summary-result">{`$${total}`}</span>
+          <span className="wm-order-summary-result">{`$${total.total}`}</span>
         </div>
       </div>
     );
@@ -93,6 +96,7 @@ class OrderBreakdown extends Component {
 
   calcTotal(subtotal, taxes) {
     let total = subtotal + taxes - 3.85;
+    this.props.calcTotal(total);
     this.setState({ total });
   }
 
@@ -118,10 +122,16 @@ class OrderBreakdown extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
+
   return {
     cart: state.cart,
     total: state.discount
   };
 }
 
-export default connect(mapStateToProps)(OrderBreakdown);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ calcTotal }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderBreakdown);

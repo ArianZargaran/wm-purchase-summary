@@ -40,14 +40,14 @@ Contains all state-less components:
 - ProductDetails and PromoForm.
   * An event can be fired by clicking 'See item details +' title or 'Apply promo code +' title
   * ProductDetails makes use of the cart info object and iterates with a map function to return this card-styled info of every product the user picked
-  * PromoForm contains the form that dispatches the action to apply a 10% discount to the 'Est. total' statement
+  * PromoForm contains the form that dispatches the action to apply a 10% discount to the 'Est. total' statement when the user enters "DISCOUNT" in the input
 
 #### state
   * The global redux state is all contained in this folder that contains the store passed to Redux/Provider, the combination of all reducers in state. Each reducer has its own folder with an initialState, the reducer itself and the action-creators.
 
 
  ## Future improvements
-* Add discount feature
+* Improve performance to aviod innecesary callbacks invocation
 * Refactor ItemDetails and PromoCode components to avoid code redudancy
 * Include Logo in the header as well as the cart iconography
 * Insert all Bind declarations inside same component's constructor to clean the render method on class components
